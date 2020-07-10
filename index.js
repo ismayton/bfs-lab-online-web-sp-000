@@ -26,26 +26,22 @@ function findAdjacent(node, vertices, edges)
   for(let i = 0; i < edges.length; i++)
   {
 ///if node is first
-    if(node == edges[i][0])
+    if(node == edges[i][1] || node == edges[i][0])
     {
-      let adjName = edges[i][1]
-      for(let j = 0; j < vertices.length; j++)
+      for(let k = 0; k < edges[i].length; k++)
       {
-        if(adjName == vertices[j].name && vertices[j].distance === null)
+        if(node.discovered === null)
         {
-          adjArr.push(vertices[j])
-        }
-      }
-    }
-///else if node is second
-    else if(node == edges[i][1])
-    {
-      let adjName = edges[i][0]
-      for(let j = 0; j < vertices.length; j++)
-      {
-        if(adjName == vertices[j].name && vertices[j].distance === null)
-        {
-          adjArr.push(vertices[j])
+          let adjName = edges[i][k]
+          console.log(`found edge`)
+          console.log(adjName)
+          for(let j = 0; j < vertices.length; j++)
+          {
+            if(adjName == vertices[j].name)
+            {
+              adjArr.push(vertices[j])
+            }
+          }
         }
       }
     }
